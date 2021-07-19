@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#f3ba12">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A customizable carousel with pure HTML, CSS, and JavaScript by Sujal Shah.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="./index.css" rel="stylesheet" type="text/css">
+    <title>JS StopWatch</title>
+</head>
+
+<body>
+    <h1 class="main-heading">Clock App in JavaScript</h1>
+
+    <div class="main__container">
+        <div class="tab">
+            <button class="tablinks" onclick="openTabHandler(event, 'stopwatch')" id="defaultOpen">Stop Watch</button>
+            <button class="tablinks" onclick="openTabHandler(event, 'timer')">Timer</button>
+            <button class="tablinks" onclick="openTabHandler(event, 'worldClock')">World Clock</button>
+        </div>
+
+        <!-- stopwatch -->
+        <div class="tabcontent" id="stopwatch">
+            <h1>Stop Watch</h1>
+            <p class="sw-time">
+                <time id="show-time">00:00:00</time>
+            </p>
+
+            <p class="sw-controllers">
+                <button class="sw-controller" onclick="startStopWatch()">Start</button>
+                <button class="sw-controller" onclick="stopStopWatch()">Stop</button>
+                <button class="sw-controller" onclick="resetStopWatch()">Reset</button>
+                <button class="sw-controller" onclick="onLapHandler()">Lap</button>
+            </p>
+
+            <div class="sw-laps-container">
+                <ol class="sw-lap-list" id="laps"></ol>
+            </div>
+        </div>
+
+        <!-- timer -->
+        <div class="tabcontent" id="timer">
+            <h1>Timer</h1>
+            <input type="time" step="1" class="timer__input" />
+        </div>
+
+        <!-- world clock -->
+        <div class="tabcontent" id="worldClock">
+            <h1>World Clock</h1>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./index.js" defer></script>
+</body>
+
+</html>
