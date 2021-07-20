@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "digital";
-  src: url("./assets/digital.TTF");
+  font-family: 'digital';
+  src: url('./assets/digital.TTF');
 }
 
 :root {
@@ -19,7 +19,7 @@
 body {
   width: 100%;
   height: 100%;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   scroll-behavior: smooth;
   background: var(--color-primary);
   color: var(--color-white);
@@ -30,13 +30,13 @@ a {
   background-color: transparent;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   width: 1rem;
   height: 1rem;
 }
 
-input[type="button"],
-input[type="checkbox"],
+input[type='button'],
+input[type='checkbox'],
 button,
 select,
 a {
@@ -67,7 +67,9 @@ h1 {
   cursor: pointer;
   padding: 0.9rem 1rem;
   transition: 0.3s;
-  font-size: 17px;
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 600;
 }
 
 .tab button.active {
@@ -84,7 +86,7 @@ h1 {
 .sw-time {
   text-align: center;
   font-size: 6rem;
-  font-family: "digital", sans-serif;
+  font-family: 'digital', sans-serif;
   margin-bottom: 1rem;
 }
 
@@ -99,6 +101,13 @@ h1 {
   font-weight: 800;
   border-radius: 5px;
   border: 2px solid var(--color-black);
+}
+
+#sw-stop,
+#sw-resume,
+#sw-reset,
+#sw-lap {
+  display: none;
 }
 
 .sw-lap-list {
@@ -130,4 +139,29 @@ h1 {
   border: 2px solid var(--color-black);
   margin: 1rem 0rem;
   border-radius: 5px;
+}
+
+.all-cities_container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.city-time__container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 1rem;
+  height: 5rem;
+  background: var(--color-white);
+  color: var(--color-black);
+  border-radius: 0.5rem;
+  border: 2px solid hsl(249, 80%, 67%);
+  font-weight: 600;
 }
