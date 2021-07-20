@@ -26,16 +26,16 @@
 
         <!-- stopwatch -->
         <div class="tabcontent" id="stopwatch">
-            <h1>Stop Watch</h1>
             <p class="sw-time">
                 <time id="show-time">00:00:00</time>
             </p>
 
             <p class="sw-controllers">
-                <button class="sw-controller" onclick="startStopWatch()">Start</button>
-                <button class="sw-controller" onclick="stopStopWatch()">Stop</button>
-                <button class="sw-controller" onclick="resetStopWatch()">Reset</button>
-                <button class="sw-controller" onclick="onLapHandler()">Lap</button>
+                <button class="sw-controller" id="sw-start" onclick="startStopWatch()">Start</button>
+                <button class="sw-controller" id="sw-stop" onclick="stopStopWatch()">Stop</button>
+                <button class="sw-controller" id="sw-resume" onclick="resumeStopWatch()">Resume</button>
+                <button class="sw-controller" id="sw-reset" onclick="resetStopWatch()">Reset</button>
+                <button class="sw-controller" id="sw-lap" onclick="onLapHandler()">Lap</button>
             </p>
 
             <div class="sw-laps-container">
@@ -45,13 +45,29 @@
 
         <!-- timer -->
         <div class="tabcontent" id="timer">
-            <h1>Timer</h1>
             <input type="time" step="1" class="timer__input" />
         </div>
 
         <!-- world clock -->
         <div class="tabcontent" id="worldClock">
-            <h1>World Clock</h1>
+            <div class="all-cities_container">
+                <div class="city-time__container">
+                    <label>London</label>
+                    <time id="city_london"></time>
+                </div>
+                <div class="city-time__container">
+                    <label>Japan</label>
+                    <time id="city_japan"></time>
+                </div>
+                <div class="city-time__container">
+                    <label>Australia</label>
+                    <time id="city_australia"></time>
+                </div>
+                <div class="city-time__container">
+                    <label>New York</label>
+                    <time id="city_ny"></time>
+                </div>
+            </div>
         </div>
     </div>
 
