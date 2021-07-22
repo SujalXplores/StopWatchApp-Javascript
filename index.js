@@ -1,9 +1,10 @@
-let id,
-  seconds = 0,
-  minutes = 0,
-  hours = 0;
+let sw_id,
+  timer_id,
+  sw_seconds = 0,
+  sw_minutes = 0,
+  sw_hours = 0;
 
-let timer = document.getElementById('show-time');
+let stopWatch = document.getElementById('show-time');
 
 document.getElementById('defaultOpen').click();
 
@@ -26,52 +27,52 @@ const startStopWatch = () => {
   document.getElementById('sw-stop').style.display = 'inline-block';
   document.getElementById('sw-lap').style.display = 'inline-block';
   document.getElementById('sw-reset').style.display = 'inline-block';
-  seconds++;
-  if (seconds >= 60) {
-    seconds = 0;
-    minutes++;
-    if (minutes >= 60) {
-      minutes = 0;
-      hours++;
+  sw_seconds++;
+  if (sw_seconds >= 60) {
+    sw_seconds = 0;
+    sw_minutes++;
+    if (sw_minutes >= 60) {
+      sw_minutes = 0;
+      sw_hours++;
     }
   }
 
-  timer.innerText =
-    (hours ? (hours > 9 ? hours : '0' + hours) : '00') +
+  stopWatch.innerText =
+    (sw_hours ? (sw_hours > 9 ? sw_hours : '0' + sw_hours) : '00') +
     ':' +
-    (minutes ? (minutes > 9 ? minutes : '0' + minutes) : '00') +
+    (sw_minutes ? (sw_minutes > 9 ? sw_minutes : '0' + sw_minutes) : '00') +
     ':' +
-    (seconds > 9 ? seconds : '0' + seconds);
+    (sw_seconds > 9 ? sw_seconds : '0' + sw_seconds);
 
-  incrementTimer();
+  incrementStopWatch();
 };
 
-const incrementTimer = () => {
-  clearInterval(id);
-  id = setInterval(startStopWatch, 1000);
+const incrementStopWatch = () => {
+  clearInterval(sw_id);
+  sw_id = setInterval(startStopWatch, 1000);
 };
 
 const resumeStopWatch = () => {
-  incrementTimer();
+  incrementStopWatch();
   document.getElementById('sw-stop').style.display = 'inline-block';
   document.getElementById('sw-lap').style.display = 'inline-block';
   document.getElementById('sw-resume').style.display = 'none';
 };
 
 const stopStopWatch = () => {
-  clearInterval(id);
+  clearInterval(sw_id);
   document.getElementById('sw-stop').style.display = 'none';
   document.getElementById('sw-lap').style.display = 'none';
   document.getElementById('sw-resume').style.display = 'inline-block';
 };
 
 const resetStopWatch = () => {
-  clearInterval(id);
-  timer.textContent = '00:00:00';
+  clearInterval(sw_id);
+  stopWatch.textContent = '00:00:00';
   document.getElementById('laps').innerHTML = '';
-  seconds = 0;
-  minutes = 0;
-  hours = 0;
+  sw_seconds = 0;
+  sw_minutes = 0;
+  sw_hours = 0;
   document.getElementById('sw-start').style.display = 'inline-block';
   document.getElementById('sw-stop').style.display = 'none';
   document.getElementById('sw-lap').style.display = 'none';
@@ -82,7 +83,7 @@ const resetStopWatch = () => {
 const onLapHandler = () => {
   const li = document.createElement('li');
   li.className = 'sw-lap';
-  li.textContent = timer.innerText;
+  li.textContent = stopWatch.innerText;
   document.getElementById('laps').appendChild(li);
 };
 
@@ -112,3 +113,31 @@ setInterval(() => {
   document.getElementById('city_london').textContent = london;
   document.getElementById('city_japan').textContent = japan;
 }, 1000);
+
+const incrementTimer = (totalSecs) => {
+  if (totalSecs > 0) {
+    totalSecs--;
+  }
+
+  hh = Math.floor(totalSecs / 60 / 60);
+  mm = Math.floor(totalSecs / 60) - hh * 60;
+  ss = totalSecs % 60;
+
+  document.getElementById('timer_value').innerText = `${hh}:${mm}:${ss}`;
+
+  if (timer_id) clearInterval(timer_id);
+
+  timer_id = setInterval(() => {
+    incrementTimer(totalSecs);
+  }, 1000);
+};
+
+const startTimer = () => {
+  let timer_value = document.getElementById('timer_input').value;
+  document.getElementById('timer_value').innerText = timer_value;
+
+  let [hh, mm, ss] = timer_value.split(':');
+  console.log(hh, mm, ss);
+  let totalSecs = +hh * 60 * 60 + +mm * 60 + +ss;
+  incrementTimer(totalSecs);
+};

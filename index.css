@@ -165,3 +165,10 @@ h1 {
   border: 2px solid hsl(249, 80%, 67%);
   font-weight: 600;
 }
+
+#timer_value {
+  text-align: center;
+  font-size: 6rem;
+  font-family: 'digital', sans-serif;
+  margin-bottom: 1rem;
+}

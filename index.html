@@ -15,8 +15,6 @@
 </head>
 
 <body>
-    <h1 class="main-heading">Clock App in JavaScript</h1>
-
     <div class="main__container">
         <div class="tab">
             <button class="tablinks" onclick="openTabHandler(event, 'stopwatch')" id="defaultOpen">Stop Watch</button>
@@ -45,7 +43,11 @@
 
         <!-- timer -->
         <div class="tabcontent" id="timer">
-            <input type="time" step="1" class="timer__input" />
+            <time id="timer_value"></time>
+            <p>
+                <input type="time" step="1" class="timer__input" id="timer_input" />
+                <button class="sw-controller" id="timer-start" onclick="startTimer()">Start Timer</button>
+            </p>
         </div>
 
         <!-- world clock -->
